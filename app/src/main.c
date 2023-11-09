@@ -25,7 +25,7 @@ void main(void) {
     LOG_INF("Welcome to ZMK!\n");
 
     if (zmk_kscan_init(DEVICE_DT_GET(ZMK_MATRIX_NODE_ID)) != 0) {
-        return;
+        return -ENOTSUP;
     }
 
 #ifdef CONFIG_ZMK_DISPLAY
