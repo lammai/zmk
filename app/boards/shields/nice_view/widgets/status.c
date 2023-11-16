@@ -174,7 +174,7 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw layer
     if (state->layer_label == NULL) {
-        char text[9] = {};
+        char text[10] = {};
 
         switch (state->layer_index)
         {
