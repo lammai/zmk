@@ -18,7 +18,7 @@ LOG_MODULE_REGISTER(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/mouse.h>
 #endif /* CONFIG_ZMK_MOUSE */
 
-void main(void) {
+int main(void) {
     LOG_INF("Welcome to ZMK!\n");
 
 #if IS_ENABLED(CONFIG_SETTINGS)
