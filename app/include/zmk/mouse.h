@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2023 The ZMK Contributors
+ * Copyright (c) 2023 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
  */
@@ -23,13 +24,6 @@ struct mouse_config {
 struct vector2d {
     float x;
     float y;
-};
-
-struct mouse_times {
-    uint64_t m_x;
-    uint64_t m_y;
-    uint64_t s_x;
-    uint64_t s_y;
 };
 
 struct k_work_q *zmk_mouse_work_q();
