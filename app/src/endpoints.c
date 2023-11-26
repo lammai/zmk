@@ -121,10 +121,12 @@ struct zmk_endpoint_instance zmk_endpoints_selected(void) {
 }
 
 static int send_keyboard_report(void) {
+    struct zmk_hid_keyboard_report *keyboard_report = zmk_hid_get_keyboard_report();
+
     switch (current_instance.transport) {
 #if IS_ENABLED(CONFIG_ZMK_USB)
     case ZMK_TRANSPORT_USB: {
-        int err = zmk_usb_hid_send_keyboard_report();
+        int err = zmk_usb_hid_send_report((uint8_t *)keyboard_report, sizeof(*keyboard_report));
         if (err) {
             LOG_ERR("FAILED TO SEND OVER USB: %d", err);
         }
@@ -134,7 +136,6 @@ static int send_keyboard_report(void) {
 
 #if IS_ENABLED(CONFIG_ZMK_BLE)
     case ZMK_TRANSPORT_BLE: {
-        struct zmk_hid_keyboard_report *keyboard_report = zmk_hid_get_keyboard_report();
         int err = zmk_hog_send_keyboard_report(&keyboard_report->body);
         if (err) {
             LOG_ERR("FAILED TO SEND OVER HOG: %d", err);
@@ -149,10 +150,12 @@ static int send_keyboard_report(void) {
 }
 
 static int send_consumer_report(void) {
+    struct zmk_hid_consumer_report *consumer_report = zmk_hid_get_consumer_report();
+
     switch (current_instance.transport) {
 #if IS_ENABLED(CONFIG_ZMK_USB)
     case ZMK_TRANSPORT_USB: {
-        int err = zmk_usb_hid_send_consumer_report();
+        int err = zmk_usb_hid_send_report((uint8_t *)consumer_report, sizeof(*consumer_report));
         if (err) {
             LOG_ERR("FAILED TO SEND OVER USB: %d", err);
         }
@@ -162,7 +165,6 @@ static int send_consumer_report(void) {
 
 #if IS_ENABLED(CONFIG_ZMK_BLE)
     case ZMK_TRANSPORT_BLE: {
-        struct zmk_hid_consumer_report *consumer_report = zmk_hid_get_consumer_report();
         int err = zmk_hog_send_consumer_report(&consumer_report->body);
         if (err) {
             LOG_ERR("FAILED TO SEND OVER HOG: %d", err);
@@ -193,10 +195,12 @@ int zmk_endpoints_send_report(uint16_t usage_page) {
 
 #if IS_ENABLED(CONFIG_ZMK_MOUSE)
 int zmk_endpoints_send_mouse_report() {
+    struct zmk_hid_mouse_report *mouse_report = zmk_hid_get_mouse_report();
+
     switch (current_instance.transport) {
 #if IS_ENABLED(CONFIG_ZMK_USB)
     case ZMK_TRANSPORT_USB: {
-        int err = zmk_usb_hid_send_mouse_report();
+        int err = zmk_usb_hid_send_report((uint8_t *)mouse_report, sizeof(*mouse_report));
         if (err) {
             LOG_ERR("FAILED TO SEND OVER USB: %d", err);
         }
@@ -206,7 +210,6 @@ int zmk_endpoints_send_mouse_report() {
 
 #if IS_ENABLED(CONFIG_ZMK_BLE)
     case ZMK_TRANSPORT_BLE: {
-        struct zmk_hid_mouse_report *mouse_report = zmk_hid_get_mouse_report();
         int err = zmk_hog_send_mouse_report(&mouse_report->body);
         if (err) {
             LOG_ERR("FAILED TO SEND OVER HOG: %d", err);
