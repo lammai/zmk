@@ -369,7 +369,7 @@ bool zmk_hid_is_pressed(uint32_t usage) {
 #if IS_ENABLED(CONFIG_ZMK_MOUSE)
 // Keep track of how often a button was pressed.
 // Only release the button if the count is 0.
-static int explicit_button_counts[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+static int explicit_button_counts[5] = {0, 0, 0, 0, 0};
 static zmk_mod_flags_t explicit_buttons = 0;
 
 #define SET_MOUSE_BUTTONS(btns)                                                                    \
