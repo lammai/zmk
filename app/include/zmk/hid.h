@@ -123,7 +123,7 @@ static const uint8_t zmk_hid_report_desc[] = {
     /* END COLLECTION */
     HID_END_COLLECTION,
 
-    #if IS_ENABLED(CONFIG_ZMK_MOUSE)
+#if IS_ENABLED(CONFIG_ZMK_MOUSE)
     /* USAGE_PAGE (Generic Desktop) */
     HID_USAGE_PAGE(HID_USAGE_GD),
     /* USAGE (Mouse) */
