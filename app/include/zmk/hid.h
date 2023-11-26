@@ -131,7 +131,7 @@ static const uint8_t zmk_hid_report_desc[] = {
     /* COLLECTION (Application) */
     HID_COLLECTION(HID_COLLECTION_APPLICATION),
     /* REPORT ID (4) */
-    HID_REPORT_ID(0x04),
+    HID_REPORT_ID(ZMK_HID_REPORT_ID_MOUSE),
     /* USAGE (Pointer) */
     HID_USAGE(HID_USAGE_GD_POINTER),
     /* COLLECTION (Physical) */
