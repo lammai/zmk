@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 
+int zmk_usb_hid_send_report(const uint8_t *report, size_t len);
 int zmk_usb_hid_send_keyboard_report();
 int zmk_usb_hid_send_consumer_report();
 #if IS_ENABLED(CONFIG_ZMK_MOUSE)
