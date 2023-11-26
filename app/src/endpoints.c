@@ -218,8 +218,8 @@ int zmk_endpoints_send_mouse_report() {
     }
 #endif /* IS_ENABLED(CONFIG_ZMK_BLE) */
 
-    LOG_ERR("Unsupported endpoint transport %d", current_instance.transport);
-    return -ENOTSUP;
+        LOG_ERR("Unsupported endpoint transport %d", current_instance.transport);
+        return -ENOTSUP;
     }
 }
 #endif /* IS_ENABLED(CONFIG_ZMK_MOUSE) */
