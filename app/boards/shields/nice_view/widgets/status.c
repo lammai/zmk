@@ -143,23 +143,22 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {25, 20}, {55, 13}, {55, 34}, {25, 48}, {55, 55},
+        {34, 24}, {55, 13}, {55, 34}, {34, 45}, {55, 55},
     };
 
     for (int i = 0; i < 5; i++) {
         bool selected = i == state->active_profile_index;
 
-        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 9, 0, 359,
-                           &arc_dsc);
+        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 9, 0, 359, &arc_dsc);
 
         if (selected) {
-            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 4, 0, 359,
+            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
                                &arc_dsc_filled);
         }
 
         char label[2];
         snprintf(label, sizeof(label), "%d", i + 1);
-        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 8, circle_offsets[i][1] - 10, 12,
+        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 6, circle_offsets[i][1] - 8, 5,
                             (selected ? &label_dsc_black : &label_dsc), label);
     }
 
