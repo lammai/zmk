@@ -145,12 +145,12 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw Bluetooth text
     char label_bt[4];
-    sprintf(label_bt, "BT:");
-    lv_canvas_draw_text(canvas, 0, 25, 30, &label_bt_dsc, label_bt);
+    sprintf(label_bt, "BT");
+    lv_canvas_draw_text(canvas, 0, 25, 27, &label_bt_dsc, label_bt);
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {37, 24}, {55, 13}, {55, 34}, {37, 45}, {55, 55},
+        {37, 24}, {54, 13}, {54, 34}, {37, 45}, {54, 55},
     };
 
     for (int i = 0; i < 5; i++) {
