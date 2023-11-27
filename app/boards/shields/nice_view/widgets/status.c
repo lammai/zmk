@@ -146,7 +146,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     // Draw Bluetooth text
     char label_bt[4];
     sprintf(label_bt, "BT:");
-    lv_canvas_draw_text(canvas, 0, 13, 16, &label_bt_dsc, label_bt);
+    lv_canvas_draw_text(canvas, 0, 25, 68, &label_bt_dsc, label_bt);
 
     // Draw circles
     int circle_offsets[5][2] = {
@@ -165,7 +165,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
         char label[2];
         snprintf(label, sizeof(label), "%d", i + 1);
-        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 2, circle_offsets[i][1] - 6, 3,
+        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 2, circle_offsets[i][1] - 9, 3,
                             (selected ? &label_dsc_black : &label_dsc), label);
     }
 
