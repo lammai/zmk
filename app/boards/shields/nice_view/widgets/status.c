@@ -133,10 +133,6 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     init_arc_dsc(&arc_dsc, LVGL_FOREGROUND, 2);
     lv_draw_arc_dsc_t arc_dsc_filled;
     init_arc_dsc(&arc_dsc_filled, LVGL_FOREGROUND, 9);
-    lv_draw_label_dsc_t label_dsc;
-    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_montserrat_12, LV_TEXT_ALIGN_CENTER);
-    lv_draw_label_dsc_t label_dsc_black;
-    init_label_dsc(&label_dsc_black, LVGL_BACKGROUND, &lv_font_montserrat_12, LV_TEXT_ALIGN_CENTER);
     lv_draw_label_dsc_t label_bt_dsc;
     init_label_dsc(&label_bt_dsc, LVGL_FOREGROUND, &lv_font_montserrat_14, LV_TEXT_ALIGN_CENTER);
 
@@ -146,11 +142,11 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     // Draw Bluetooth text
     char label_bt[4];
     sprintf(label_bt, "BT");
-    lv_canvas_draw_text(canvas, 0, 25, 27, &label_bt_dsc, label_bt);
+    lv_canvas_draw_text(canvas, 0, 25, 28, &label_bt_dsc, label_bt);
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {37, 24}, {54, 13}, {54, 34}, {37, 45}, {54, 55},
+        {37, 24}, {37, 45}, {55, 13}, {55, 34}, {55, 55},
     };
 
     for (int i = 0; i < 5; i++) {
@@ -162,11 +158,6 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
             lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
                                &arc_dsc_filled);
         }
-
-        char label[2];
-        snprintf(label, sizeof(label), "%d", i + 1);
-        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 2, circle_offsets[i][1] - 7, 3,
-                            (selected ? &label_dsc_black : &label_dsc), label);
     }
 
     // Rotate canvas
