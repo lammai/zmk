@@ -91,7 +91,7 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
 
     char wpm_text[6] = {};
     snprintf(wpm_text, sizeof(wpm_text), "%d", state->wpm[9]);
-    lv_canvas_draw_text(canvas, 17, 63, 27, &label_dsc_wpm, wpm_text);
+    lv_canvas_draw_text(canvas, 15, 61, 26, &label_dsc_wpm, wpm_text);
 
     int max = 0;
     int min = 256;
@@ -195,6 +195,9 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
             break;
         case 5:
             sprintf(text, "<UTIL>");
+            break;
+        case 6:
+            sprintf(text, "SYSTEM");
             break;
         default:
             sprintf(text, "LAYER %i", state->layer_index);
