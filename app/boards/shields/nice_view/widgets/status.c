@@ -91,7 +91,7 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
 
     char wpm_text[6] = {};
     snprintf(wpm_text, sizeof(wpm_text), "%d", state->wpm[9]);
-    lv_canvas_draw_text(canvas, 34, 68, 30, &label_dsc_wpm, wpm_text);
+    lv_canvas_draw_text(canvas, 34, 60, 27, &label_dsc_wpm, wpm_text);
 
     int max = 0;
     int min = 256;
@@ -142,7 +142,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {13, 13}, {34, 13}, {55, 13}, {23.5, 35}, {44.5, 35},
+        {13, 13}, {34, 13}, {55, 13}, {23.5, 33}, {44.5, 33},
     };
 
     for (int i = 0; i < 5; i++) {
