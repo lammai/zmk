@@ -87,7 +87,6 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
     lv_canvas_draw_text(canvas, 0, 0, CANVAS_SIZE, &label_dsc, output_text);
 
     // Draw WPM
-    lv_canvas_draw_rect(canvas, 0, 21, 68, 42, &rect_white_dsc);
     lv_canvas_draw_rect(canvas, 1, 22, 66, 40, &rect_black_dsc);
 
     char wpm_text[6] = {};
@@ -143,24 +142,19 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {13, 13}, {55, 13}, {34, 34}, {13, 55}, {55, 55},
+        {13, 13}, {23, 13}, {33, 13}, {23, 18}, {23, 28},
     };
 
     for (int i = 0; i < 5; i++) {
         bool selected = i == state->active_profile_index;
 
-        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 359,
+        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 10, 0, 359,
                            &arc_dsc);
 
         if (selected) {
-            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 9, 0, 359,
+            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
                                &arc_dsc_filled);
         }
-
-        char label[2];
-        snprintf(label, sizeof(label), "%d", i + 1);
-        lv_canvas_draw_text(canvas, circle_offsets[i][0] - 8, circle_offsets[i][1] - 10, 16,
-                            (selected ? &label_dsc_black : &label_dsc), label);
     }
 
     // Rotate canvas
@@ -182,7 +176,13 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     if (state->layer_label == NULL) {
         char text[9] = {};
 
-        sprintf(text, "LAYER %i", state->layer_index);
+        if (state->layer_index == 4) {
+            sprintf(text, "Gaming");
+        } else if (state->layer_index == 5) {
+            sprintf(text, "Utilities");
+        } else {
+            sprintf(text, "LAYER %i", state->layer_index);
+        }
 
         lv_canvas_draw_text(canvas, 0, 5, 68, &label_dsc, text);
     } else {
