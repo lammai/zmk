@@ -142,16 +142,17 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
     // Draw circles
     int circle_offsets[5][2] = {
-        {13, 18}, {34, 18}, {55, 18}, {23.5, 36}, {44.5, 36},
+        {13, 13}, {23, 13}, {33, 13}, {23, 18}, {23, 28},
     };
 
     for (int i = 0; i < 5; i++) {
         bool selected = i == state->active_profile_index;
 
-        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 9, 0, 359,
+        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 10, 0, 359,
                            &arc_dsc);
 
         if (selected) {
+            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
             lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
                                &arc_dsc_filled);
         }
@@ -176,32 +177,12 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     if (state->layer_label == NULL) {
         char text[9] = {};
 
-        switch (state->layer_index)
-        {
-        case 0:
-            sprintf(text, "BASE");
-            break;
-        case 1:
-            sprintf(text, "RAISE");
-            break;
-        case 2:
-            sprintf(text, "LOWER");
-            break;
-        case 3:
-            sprintf(text, "[NAV]");
-            break;
-        case 4:
-            sprintf(text, "<GAME>");
-            break;
-        case 5:
-            sprintf(text, "<UTIL>");
-            break;
-        case 6:
-            sprintf(text, "SYSTEM");
-            break;
-        default:
+        if (state->layer_index == 4) {
+            sprintf(text, "Gaming");
+        } else if (state->layer_index == 5) {
+            sprintf(text, "Utilities");
+        } else {
             sprintf(text, "LAYER %i", state->layer_index);
-            break;
         }
 
         lv_canvas_draw_text(canvas, 0, 5, 72, &label_dsc, text);
