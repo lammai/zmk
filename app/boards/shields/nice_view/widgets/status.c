@@ -152,7 +152,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
                            &arc_dsc);
 
         if (selected) {
-            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 6, 0, 359,
+            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 7, 0, 359,
                                &arc_dsc_filled);
         }
     }
