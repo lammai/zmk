@@ -6,12 +6,6 @@ on:
             - '.github/workflows/build.yml'
             - 'app/**'
 
-concurrency:
-    group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name == 'schedule' }}
-    cancel-in-progress: true
-
-permissions: {}
-
 jobs:
     build:
         if: ${{ always() }}
