@@ -12,10 +12,7 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-#include <zmk/matrix.h>
-#include <zmk/kscan.h>
 #include <zmk/display.h>
-#include <drivers/ext_power.h>
 
 #ifdef CONFIG_ZMK_MOUSE
 #include <zmk/mouse.h>
@@ -23,10 +20,6 @@ LOG_MODULE_REGISTER(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 void main(void) {
     LOG_INF("Welcome to ZMK!\n");
-
-    if (zmk_kscan_init(DEVICE_DT_GET(ZMK_MATRIX_NODE_ID)) != 0) {
-        return -ENOTSUP;
-    }
 
 #if IS_ENABLED(CONFIG_SETTINGS)
     settings_subsys_init();
