@@ -22,6 +22,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/usb.h>
 #include <zmk/ble.h>
+#include <zmk/keymap.h>
 
 LV_IMG_DECLARE(balloon);
 LV_IMG_DECLARE(mountain);
