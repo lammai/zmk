@@ -28,6 +28,11 @@ void main(void) {
         return -ENOTSUP;
     }
 
+#if IS_ENABLED(CONFIG_SETTINGS)
+    settings_subsys_init();
+    settings_load();
+#endif
+
 #ifdef CONFIG_ZMK_DISPLAY
     zmk_display_init();
 #endif /* CONFIG_ZMK_DISPLAY */
